@@ -1,0 +1,15 @@
+.flexbox{
+    display: flex;
+    justify-content: right;
+}
+
+.btn {
+    border-radius: 10em;
+    margin-left: 2em;
+}
+
+.logo{
+    width: 3em;
+    cursor: pointer;
+}
+
