@@ -1,12 +1,5 @@
-body{
-    background: linear-gradient(to right, #cdffd8, #94b9ff);
-}
-
-
 .container {
   display: grid;
-  grid-template-areas:
-    "menu content";
+  grid-template-areas: "menu content";
   grid-template-columns: 1fr 1fr;
 }
-

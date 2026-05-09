@@ -11,7 +11,8 @@ import { MapOptions, tileLayer, latLng } from 'leaflet';
 export class DenuncieAqui {
   protected readonly mapOptions: MapOptions = {
     layers: [
-      tileLayer('https://www.openstreetmap.org/search?lat=-13.86059&lon=-40.07263&zoom=15#map=15/-13.86060/-40.07261', { maxZoom: 18, attribution: '...' }),
+      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        { maxZoom: 18, attribution: '...' }),
     ],
     zoom: 5,
     center: latLng(46.879966, -121.726909),
