@@ -3,20 +3,27 @@ import { LeafletDirective } from '@bluehalo/ngx-leaflet';
 import { MapOptions, tileLayer, latLng } from 'leaflet';
 
 @Component({
-  selector: 'app-denuncie-aqui',
+  selector: 'app-map',
   imports: [LeafletDirective],
-  templateUrl: './denuncie-aqui.html',
-  styleUrl: './denuncie-aqui.css',
+  template: `
+    <div style="height: 100%" leaflet [leafletOptions]="mapOptions"></div>
+  `,
 })
-export class DenuncieAqui {
+export class Map {
   protected readonly mapOptions: MapOptions = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { maxZoom: 18, attribution: '...' }),
     ],
-    zoom: 5,
-    center: latLng(46.879966, -121.726909),
+    zoom: 14,
+    center: latLng(-14.79755, -39.17305),
   };
-
-  ngOnInit() {}
 }
+
+@Component({
+  selector: 'app-denuncie-aqui',
+  imports: [Map],
+  templateUrl: './denuncie-aqui.html',
+  styleUrl: './denuncie-aqui.css',
+})
+export class DenuncieAqui {}
