@@ -1,0 +1,120 @@
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3.5rem 3rem 4rem;
+}
+
+.header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #4c045e;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 15px;
+    color: #7a6e60;
+    max-width: 520px;
+}
+
+.cards {
+    background-color: white;
+    border: 1.5px solid #e0d9cc;
+    border-left: 5px solid #F4C067;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    gap: 14px;
+    transition: box-shadow 0.15s;
+}
+
+.cards:hover {
+    box-shadow: 0 4px 16px rgba(76, 5, 94, 0.08);
+}
+
+.cards h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #4c045e;
+    margin-bottom: 5px;
+}
+
+.cards p {
+    font-size: 13.5px;
+    color: #7a6e60;
+    line-height: 1.6;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.right-cards {
+    background-color: white;
+    border: 1.5px solid #e0d9cc;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.right-cards h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #4c045e;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2.5px solid #F4C067;
+    display: inline-block;
+}
+
+.right-cards p {
+    font-size: 13px;
+    color: #7a6e60;
+    line-height: 1.75;
+}
+
+.right-cards p + p {
+    margin-top: 0.6rem;
+}
+
+.canais-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.canais {
+    background-color: #F8F3E7;
+    border-radius: 10px;
+    padding: 0.875rem 1.125rem;
+    border: 1px solid #e0d9cc;
+}
+
+.canais-num {
+    font-size: 26px;
+    font-weight: 800;
+    color: #4c045e;
+    line-height: 1;
+}
+
+.canais-label {
+    font-size: 11.5px;
+    color: #7a6e60;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.aviso {
+    background-color: #F4C067;
+    border-radius: 8px;
+    padding: 0.75rem 1.125rem;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #4c045e;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
