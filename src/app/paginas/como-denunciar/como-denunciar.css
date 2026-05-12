@@ -1,120 +1,156 @@
-main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 3.5rem 3rem 4rem;
+.flexbox {
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
-.header h1 {
-    font-size: 36px;
+.hero {
+    height: 45vh;
+    background-color: rgb(56, 30, 71);
+    color: #fff;
+}
+
+.titulo {
+    margin-top: 100px;
+}
+
+.titulo h1 {
+    font-size: 60px;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: 800;
-    color: #4c045e;
-    margin-bottom: 8px;
+    margin-bottom: 30px;
 }
 
-.header p {
+.titulo p {
+    font-size: 21px;
+    width: 65ch;
+    color: rgb(190, 178, 178);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.denuncie {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
-    color: #7a6e60;
-    max-width: 520px;
+    margin-top: 30px;
+    font-weight: 800;
+    color: rgb(56, 30, 71);
+    background-color: rgb(255, 191, 82);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 20px;
+
+    cursor: pointer;
+}
+
+.contatos-oficiais {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgb(156, 120, 156);
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.topico {
+    margin-top: 4rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.topico h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    color: rgb(56, 30, 71);
+}
+
+.topico p {
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 70vh;
+    color: rgb(145, 135, 135);
+}
+
+.tutorial {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.ordem {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    color: rgba(190, 178, 178, 0.554);
+    font-weight: 800;
+    margin-right: 20px;   
+}
+
+.tutorial h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    color: rgb(56, 30, 71);
+}
+
+.boxes {
+    width: 300px;
+    margin-right: 30px;
+    border: 1px solid rgb(210, 205, 205);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.108) 0px 5px 15px;
+}
+
+.boxes span {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+    color: rgba(190, 178, 178, 0.554);
+    font-weight: 800;
+    margin-right: 20px;   
+}
+
+.boxes p {
+    color: rgb(143, 136, 136);
+}
+
+.contatos {
+    margin-top: 4rem;
+    width: 30vh;
 }
 
 .cards {
-    background-color: white;
-    border: 1.5px solid #e0d9cc;
-    border-left: 5px solid #F4C067;
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    gap: 14px;
-    transition: box-shadow 0.15s;
+    width: 40px;
 }
 
-.cards:hover {
-    box-shadow: 0 4px 16px rgba(76, 5, 94, 0.08);
+.cards h6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(161, 47, 47, 0.288);
+    color: rgb(175, 33, 33);
+    border-radius: 15px;
+
+    width: 120px;
+    height: 30px;
+
+    margin-bottom: 20px;
 }
 
-.cards h4 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #4c045e;
-    margin-bottom: 5px;
+.cards h5 {
+    color:rgb(0, 0, 0)
+}
+
+.cards span {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    color: rgb(175, 33, 33);
+    font-size: 40px;
 }
 
 .cards p {
-    font-size: 13.5px;
-    color: #7a6e60;
-    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(143, 136, 136);
 }
 
-.col {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.right-cards {
-    background-color: white;
-    border: 1.5px solid #e0d9cc;
-    border-radius: 12px;
-    padding: 1.5rem;
-}
-
-.right-cards h4 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #4c045e;
-    margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 2.5px solid #F4C067;
-    display: inline-block;
-}
-
-.right-cards p {
-    font-size: 13px;
-    color: #7a6e60;
-    line-height: 1.75;
-}
-
-.right-cards p + p {
-    margin-top: 0.6rem;
-}
-
-.canais-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 1rem;
-}
-
-.canais {
-    background-color: #F8F3E7;
-    border-radius: 10px;
-    padding: 0.875rem 1.125rem;
-    border: 1px solid #e0d9cc;
-}
-
-.canais-num {
-    font-size: 26px;
-    font-weight: 800;
-    color: #4c045e;
-    line-height: 1;
-}
-
-.canais-label {
-    font-size: 11.5px;
-    color: #7a6e60;
-    margin-top: 4px;
-    line-height: 1.4;
-}
-
-.aviso {
-    background-color: #F4C067;
-    border-radius: 8px;
-    padding: 0.75rem 1.125rem;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: #4c045e;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
