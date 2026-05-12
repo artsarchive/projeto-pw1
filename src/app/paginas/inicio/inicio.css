@@ -1,4 +1,4 @@
-.pFundo{
+.pFundo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: #F8F3E7;
@@ -14,16 +14,20 @@
   z-index: 1;
 }
 
-.esquerdo{
+.esquerdo {
   position: relative;
   z-index: 2;
   padding: 10%;
 }
 
 .direito {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: relative;
   z-index: 2;
-  margin-left: 20%;
+  /* margin-left: 20%; */
 }
 
 .botao_denuncie {
@@ -37,18 +41,17 @@
   border-radius: 8px;
 }
 
-.botao_denuncie:hover{
+.botao_denuncie:hover {
   background-color: #cab796;
   color: white;
 }
 
-.txt_h1{
+.txt_h1 {
   color: #4c045e;
   font-weight: bold;
 }
 
-.img_1{
-  width: 60%;
-  margin-top: 5%;
-  margin-left: 15%;
+.img_1 {
+  max-height: 50vh;
+  width: auto;
 }
