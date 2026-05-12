@@ -1,56 +1,60 @@
-<div class="center-wrapper">
-  <div class="container-flex window">
-    <div class="row">
-      <div class="col-sm">
-        <form>
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Qual foi o tipo de violência sofrida?</label>
-            <select class="custom-select">
-              <option value="trafico">Tráfico</option>
-              <option value="sexual">Sexual</option>
-              <option value="feminicidio">Feminicídio</option>
-              <option value="agressao">Agressão</option>
-              <option value="psicologica">Psicológica</option>
-              <option value="exploração">Exploração</option>
-              <option value="machismo">Machismo</option>
-              <option value="assalto">Assalto</option>
+<div class="FUCK">
+  <app-menu></app-menu>
 
-              <!-- Esses aqui fazem sentido? Tem overlap -->
-              <option value="insulto">Insulto</option>
-              <option value="desrespeito">Desrespeito</option>
-              <option value="injustica">Injustiça</option>
-              <option value="indiferença">Indiferença</option>
-            </select>
-          </div>
+  <div class="center-wrapper">
+    <div class="container-flex window">
+      <div class="row">
+        <div class="col-sm">
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Qual foi o tipo de violência sofrida?</label>
+              <select class="custom-select">
+                <option value="trafico">Tráfico</option>
+                <option value="sexual">Sexual</option>
+                <option value="feminicidio">Feminicídio</option>
+                <option value="agressao">Agressão</option>
+                <option value="psicologica">Psicológica</option>
+                <option value="exploração">Exploração</option>
+                <option value="machismo">Machismo</option>
+                <option value="assalto">Assalto</option>
 
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Data da ocorrência:</label>
-            <input class="form-control" type="date" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"/>
-          </div>
+                <!-- Esses aqui fazem sentido? Tem overlap -->
+                <option value="insulto">Insulto</option>
+                <option value="desrespeito">Desrespeito</option>
+                <option value="injustica">Injustiça</option>
+                <option value="indiferença">Indiferença</option>
+              </select>
+            </div>
 
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Horário da ocorrência:</label>
-            <select class="custom-select">
-              <!-- TODO: isso aqui tá bom? ou tem que ser o horário específico mesmo -->
-              <option value="madrugada">Madrugada (00:00 - 04:59) </option>
-              <option value="manha">Manhã (05:00 - 12:59)</option>
-              <option value="tarde">Tarde (13:00 - 17:59)</option>
-              <option value="noite">Noite (18:00 - 23:59)</option>
-            </select>
-          </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Data da ocorrência:</label>
+              <input class="form-control" type="date" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"/>
+            </div>
 
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Ponto de referência</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Horário da ocorrência:</label>
+              <select class="custom-select">
+                <!-- TODO: isso aqui tá bom? ou tem que ser o horário específico mesmo -->
+                <option value="madrugada">Madrugada (00:00 - 04:59) </option>
+                <option value="manha">Manhã (05:00 - 12:59)</option>
+                <option value="tarde">Tarde (13:00 - 17:59)</option>
+                <option value="noite">Noite (18:00 - 23:59)</option>
+              </select>
+            </div>
 
-          <div class="form-group">
-            <button type="button" class="btn btn-primary">Enviar</button>
-          </div>
-        </form>
-      </div>
-      <div class="col-sm">
-        <app-map></app-map>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Ponto de referência</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm">
+          <app-map></app-map>
+        </div>
       </div>
     </div>
   </div>

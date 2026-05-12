@@ -1,8 +1,13 @@
 .center-wrapper {
+  background-color: #F8F3E7;
+
+  height: 95vh;
+  padding: 0;
+  margin: 0;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: auto;
 }
 
 .window {

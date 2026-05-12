@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
 import { MapOptions, tileLayer, latLng } from 'leaflet';
+import { Menu } from '../../a/menu/menu';
 
 @Component({
   selector: 'app-map',
@@ -22,7 +23,7 @@ export class Map {
 
 @Component({
   selector: 'app-denuncie-aqui',
-  imports: [Map],
+  imports: [Map, Menu],
   templateUrl: './denuncie-aqui.html',
   styleUrl: './denuncie-aqui.css',
 })
