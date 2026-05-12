@@ -1,0 +1,48 @@
+.geral {
+    background-color: rgb(56, 30, 71);
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero {
+    height: 150px;
+}
+
+.hero h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 60px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.hero p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    color: rgb(190, 178, 178);
+}
+
+.cards {
+    padding: 3rem;
+}
+
+.cards h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+    color: rgb(56, 30, 71);
+    margin-right: 20px;
+}
+
+.cards button {
+    margin-right: 20px;
+    border: none; 
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(89, 49, 112, 0.37);
+    width: 90px;
+    border-radius: 12px;
+    cursor: pointer;
+}
