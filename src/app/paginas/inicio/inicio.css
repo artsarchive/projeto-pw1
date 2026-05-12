@@ -1,5 +1,54 @@
-.container {
-  display: grid;
-  grid-template-areas: "menu content";
-  grid-template-columns: 1fr 1fr;
+.pFundo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #F8F3E7;
+    position: relative;
+    /*height: 100vh;*/
+}
+
+.triangulo {
+  position: absolute;
+  inset: 0; /* top:0 left:0 right:0 bottom:0 */
+  background-color: #F4C067;
+  clip-path: polygon(0 0, 50% 100%, 0 100%);
+  z-index: 1;
+}
+
+.esquerdo{
+  position: relative;
+  z-index: 2;
+  padding: 10%;
+}
+
+.direito {
+  position: relative;
+  z-index: 2;
+  margin-left: 20%;
+}
+
+.botao_denuncie {
+  background-color: #4c045e;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.botao_denuncie:hover{
+  background-color: #cab796;
+  color: white;
+}
+
+.txt_h1{
+  color: #4c045e;
+  font-weight: bold;
+}
+
+.img_1{
+  width: 60%;
+  margin-top: 5%;
+  margin-left: 15%;
 }

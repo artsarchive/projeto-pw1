@@ -1,15 +1,9 @@
-.flexbox{
-    display: flex;
-    justify-content: right;
+.logo {
+  height: 100%;
+  width: 7em;
+  cursor: pointer;
 }
 
-.btn {
-    border-radius: 10em;
-    margin-left: 2em;
+.navbar {
+  background-color: #F8F3E7;
 }
-
-.logo{
-    width: 3em;
-    cursor: pointer;
-}
-
