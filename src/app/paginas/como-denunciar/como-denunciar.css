@@ -2,16 +2,14 @@
     display: flex;
     text-align: center;
     justify-content: center;
+    align-items: center;
 }
+
 
 .hero {
     height: 45vh;
     background-color: rgb(56, 30, 71);
     color: #fff;
-}
-
-.titulo {
-    margin-top: 100px;
 }
 
 .titulo h1 {
