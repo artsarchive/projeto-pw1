@@ -27,7 +27,7 @@ class Map {
 export class Form {
   constructor(
     public tipoViolencia: string,
-    public dataOcorrencia: string,
+    public dataOcorrencia: Date,
     public horarioOcorrencia: string,
     public pontoReferencia: string,
     public local: string, // TODO: descobrir tipo
@@ -65,5 +65,5 @@ export class DenuncieAqui {
     "noite": "Noite (18:00 - 23:59)",
   };
 
-  model = new Form("agressao", "", "tarde", "", "");
+  model = new Form("agressao", new Date(), "tarde", "", "");
 }
