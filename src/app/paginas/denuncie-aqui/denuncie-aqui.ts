@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { KeyValuePipe } from '@angular/common';
+import { Component, signal } from '@angular/core';
+import { KeyValuePipe, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
 import { MapOptions, tileLayer, latLng } from 'leaflet';
@@ -23,24 +23,31 @@ class Map {
   };
 }
 
-// TODO: https://angular.dev/guide/forms/template-driven-forms
-export class Form {
+export class Submissao {
   constructor(
     public tipoViolencia: string,
-    public dataOcorrencia: Date,
+    public dataOcorrencia: string,
     public horarioOcorrencia: string,
     public pontoReferencia: string,
     public local: string, // TODO: descobrir tipo
   ) {}
 }
 
+function dateOffset(d: Date, off: number): Date {
+  const c = new Date(d);
+  c.setDate(c.getDate() + off);
+  return c;
+}
+
 @Component({
   selector: 'app-denuncie-aqui',
-  imports: [Map, Menu, FormsModule, KeyValuePipe],
+  imports: [Map, Menu, FormsModule, KeyValuePipe, JsonPipe],
   templateUrl: './denuncie-aqui.html',
   styleUrl: './denuncie-aqui.css',
 })
 export class DenuncieAqui {
+  debugSig = signal("");
+
   readonly tiposViolencia = {
     "trafico": "Tráfico",
     "sexual": "Sexual",
@@ -65,5 +72,18 @@ export class DenuncieAqui {
     "noite": "Noite (18:00 - 23:59)",
   };
 
-  model = new Form("agressao", new Date(), "tarde", "", "");
+  model = new Submissao("agressao", "", "tarde", "", "");
+
+  validateForm(): boolean {
+    const now = new Date();
+    const got = new Date(this.model.dataOcorrencia).getDate();
+
+    if (got < dateOffset(now, -7).getDate()) return false;
+    if (got > now.getDate()) return false;
+    return true;
+  }
+
+  onSubmit(ev: Event) {
+    this.debugSig.set(`SEI LA ${this.validateForm()}`);
+  }
 }
