@@ -1,0 +1,41 @@
+<div class="wrap">
+    <form [formGroup]="form" (ngSubmit)="enviar()">
+
+    <h3 class="section">Feedback</h3>
+    <div class="row">
+        <div class="group">
+            <label class="label">Nome <span class="opcional">(opcional)</span></label>
+            <input class="input" type="text" formControlName="nome" placeholder="Seu nome"  maxLength="15">
+        </div>
+        <div class="group">
+            <label class="label">E-mail <span class="opcional">(opcional)</span></label>
+            <input class="input" type="email" formControlName="email" placeholder="seu@email.com" maxLength="15">
+        </div>
+    </div>
+
+    <div class="group">
+        <label class="label">Tipo de sugestão *</label>
+        <select class="select" formControlName="tipo">
+        <option value="" disabled>Selecione um tipo</option>
+        <option value="melhoria">Melhoria no site</option>
+        <option value="recurso">Novo recurso</option>
+        <option value="conteudo">Conteúdo</option>
+        <option value="outro">Outro</option>
+        </select>
+        @if (form.get('tipo')?.invalid && form.get('tipo')?.touched) {
+        <span class="error" style="display:block">O tipo deve ser selecionado.</span>
+        }
+    </div>
+
+    <div class="group">
+        <label class="label">Mensagem *</label>
+        <textarea class="textarea" formControlName="mensagem" placeholder="Escreva sua sugestão aqui..." maxLength="150"></textarea>
+        @if (form.get('mensagem')?.invalid && form.get('mensagem')?.touched) {
+        <span class="error" style="display:block">* A mensagem é um campo obrigatório.</span>
+        }
+    </div>
+
+    <button class="btn" type="button" (click)="enviar()">Enviar</button>
+
+    </form>
+</div>
