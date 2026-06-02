@@ -6,20 +6,16 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <img src="logo.png" class="logo" routerLink="/"/>
+    <img src="logo_1.png" class="logo"/>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/como-denunciar">COMO DENUNCIAR</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/denuncie-aqui">DENUNCIE AQUI</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/sobre-projeto">SOBRE O PROJETO</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/areas-afetadas">ÁREAS AFETADAS</a>
-      </li>
+      @for (item of items; track item.link) {
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="item.link" routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{exact: true}">
+            {{ item.name }}
+          </a>
+        </li>
+      }
     </ul>
   </div>
 </nav>
