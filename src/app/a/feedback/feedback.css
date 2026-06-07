@@ -1,82 +1,86 @@
 h3 {
-    color: #4c045e;
+  color: #4c045e;
 }
 
 .wrap {
-    max-width: 520px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #F8F3E7;
-    border-radius: 12px;
-    border: 0.5px solid #cab796;
+  max-width: 520px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #eceaf3;
+  border-radius: 12px;
+  border: 0.5px solid #13063077;
 }
 
 .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 0;
-    margin: 0 0 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0;
+  margin: 0 0 1rem 0;
 }
 
 .group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 1rem;
 }
 
 .label {
-    font-size: 13px;
-    font-weight: 500;
-    color: #4c045e;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4c045e;
 }
 
 .opcional {
-    font-size: 12px;
-    color: #888;
-    font-weight: 400;
-    margin-left: 4px;
+  font-size: 12px;
+  color: #888888;
+  font-weight: 400;
+  margin-left: 4px;
 }
 
-.input, select, textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    border: 1.5px solid #cab796;
-    border-radius: 8px;
-    background: #fff;
-    font-size: 14px;
-    color: #2c1a00;
-    outline: none;
-    transition: border-color 0.2s;
-    font-family: inherit;
+.input,
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1.5px solid #6b5ea3;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 14px;
+  color: #2c1a00;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
 }
 
-.input:focus, select:focus, textarea:focus {
-    border-color: #4c045e;
+.input:focus,
+select:focus,
+textarea:focus {
+  border-color: #4c045e;
 }
 
 .btn {
-    width: 100px;
-    padding: 12px;
-    background: #4c045e;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: background 0.2s;
+  width: 100px;
+  padding: 12px;
+  background: #4c045e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
 }
 
 .btn:hover {
-    background: #6a0882;
+  background: #6a0882;
 }
 
 .error {
-    font-size: 12px;
-    color: #a32d2d;
-    margin-top: 2px;
+  font-size: 12px;
+  color: #a32d2d;
+  margin-top: 2px;
 }
