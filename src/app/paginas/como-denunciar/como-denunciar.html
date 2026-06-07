@@ -1,88 +1,217 @@
 <main class="hero">
-    <app-menu></app-menu>
-    <div class="hero flexbox">
+  <app-menu></app-menu>
 
-        <div class="titulo">
-            <h1>Sua voz pode mudar o mapa</h1>
-            <p>Cada relato enviado ajuda a revelar onde a violência se concentra. Com dados reais, é possível agir prevenindo, informando e protegendo comunidades.</p>
-            <button class="denuncie" routerLink="/denuncie-aqui">Fazer denúncia pelo site</button>
-            <button class="contatos-oficiais">Ver órgãos oficiais</button>
-        </div>
+  <section class="hero flexbox">
+    <div class="titulo">
+      <h1>Sua voz pode mudar o mapa</h1>
+      <p>
+        Cada relato enviado ajuda a revelar onde a violência se concentra. Com dados reais, é
+        possível agir prevenindo, informando e protegendo comunidades.
+      </p>
+      <div class="hero-cta-group">
+        <a class="denuncie" routerLink="/denuncie-aqui">Fazer denúncia pelo site</a>
+        <button class="contatos-oficiais">Ver órgãos oficiais</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="flexbox">
+    <div class="topico">
+      <h2><span class="ordem">01</span> Como funciona o registro?</h2>
+      <p>
+        O processo é simples e leva menos de 3 minutos. Seu relato é tratado com privacidade e
+        contribui diretamente para o mapa de calor de ocorrências.
+      </p>
+    </div>
+  </div>
+
+  <div class="tutorial">
+    <div class="boxes">
+      <span>01</span>
+      <h4>Tipo de violência</h4>
+      <p>Selecione a categoria mais adequada: física, verbal, sexual, doméstica, entre outras.</p>
     </div>
 
-    <div class="flexbox">
-        <div class="topico">
-            <h2><span class="ordem">01</span> Como funciona o registro?</h2>
-            <p>O processo é simples e leva menos de 3 minutos. Seu relato é tratado com privacidade e contribui diretamente para o mapa de calor de ocorrências.</p>
-        </div>
+    <div class="boxes">
+      <span>02</span>
+      <h4>Data e horário</h4>
+      <p>
+        Informe quando a ocorrência aconteceu. Isso ajuda a identificar padrões de risco ao longo do
+        dia e da semana.
+      </p>
     </div>
 
-    <div class="tutorial">
-        <div class="row">
-            <div class="col boxes"> 
-                <span>01</span>
-                <h4>Tipo de violência</h4>
-                <p>Selecione a categoria mais adequada: física, verbal, sexual, doméstica, entre outras.</p>
-            </div>
-
-            <div class="col boxes"> 
-                <span>02</span>
-                <h4>Data e horário</h4>
-                <p>Informe quando a ocorrência aconteceu. Isso ajuda a identificar padrões de risco ao longo do dia e da semana.</p>
-            </div>
-
-            <div class="col boxes"> 
-                <span>03</span>
-                <h4>Informe a localização</h4>
-                <p>Indique o endereço ou bairro onde ocorreu o incidente. Quanto mais preciso, melhor.</p>
-            </div>            
-            
-            <div class="col boxes"> 
-                <span>04</span>
-                <h4>Registrar ocorrência</h4>
-                <p>Seus dados são protegidos. O relato é feito de forma anônima. Nenhuma informação pesoal é obrigatória.</p>
-            </div>               
-        </div>
+    <div class="boxes">
+      <span>03</span>
+      <h4>Informe a localização</h4>
+      <p>Indique o endereço ou bairro onde ocorreu o incidente. Quanto mais preciso, melhor.</p>
     </div>
 
-    <div class="flexbox">
-        <div class="topico">
-            <h2><span class="ordem">02</span> Órgãos oficiais de denúncia</h2>
-            <p>Em situações de perigo imediato, ligue para um dos canais abaixo. O registro no site NÃO substitui o acionamento das autoridades competentes.</p>
-        </div>
+    <div class="boxes">
+      <span>04</span>
+      <h4>Registrar ocorrência</h4>
+      <p>
+        Seus dados são protegidos. O relato pode ser feito de forma anônima. Nenhuma informação
+        pessoal é obrigatória.
+      </p>
     </div>
+  </div>
 
-    <div class="contatos">
-        <div class="row">
-            <div class="col cards">
-                <h6>EMERGÊNCIA</h6>
-                <h5>Polícia Militar</h5>
-                <span>190</span>
-                <p>Atendimento de ocorrências em flagrante, situações de risco e crimes em andamento.</p>
-                <p>Disponível 24h, 7 dias por semana</p>
-            </div>
-            <div class="col cards">
-                <h6>EMERGÊNCIA</h6>
-                <h5>Polícia Militar</h5>
-                <span>190</span>
-                <p>Atendimento de ocorrências em flagrante, situações de risco e crimes em andamento.</p>
-                <p>Disponível 24h, 7 dias por semana</p>
-            </div>
-            <div class="col cards">
-                <h6>EMERGÊNCIA</h6>
-                <h5>Polícia Militar</h5>
-                <span>190</span>
-                <p>Atendimento de ocorrências em flagrante, situações de risco e crimes em andamento.</p>
-                <p>Disponível 24h, 7 dias por semana</p>
-            </div>
-            <div class="col cards">
-                <h6>EMERGÊNCIA</h6>
-                <h5>Polícia Militar</h5>
-                <span>190</span>
-                <p>Atendimento de ocorrências em flagrante, situações de risco e crimes em andamento.</p>
-                <p>Disponível 24h, 7 dias por semana</p>
-            </div>
-        </div>
+  <div class="flexbox">
+    <div class="topico" id="orgaos-oficiais">
+      <h2><span class="ordem">02</span> Órgãos oficiais de denúncia</h2>
+      <p>
+        Em situações de perigo imediato, ligue para um dos canais abaixo. O registro no site
+        <strong>não</strong>
+        substitui o acionamento das autoridades competentes.
+      </p>
     </div>
+  </div>
 
+  <div class="contatos">
+    <div class="cards-grid">
+      <div class="cards card-vermelho">
+        <h6>EMERGÊNCIA</h6>
+        <h5>Polícia Militar</h5>
+        <span>190</span>
+        <p>Atendimento de ocorrências em flagrante, situações de risco e crimes em andamento.</p>
+        <p class="disponivel">● Disponível 24h, 7 dias por semana</p>
+      </div>
+
+      <div class="cards card-vermelho">
+        <h6>EMERGÊNCIA</h6>
+        <h5>SAMU</h5>
+        <span>192</span>
+        <p>Atendimento médico de urgência para vítimas de violência com necessidade de socorro.</p>
+        <p class="disponivel">● Disponível 24h, 7 dias por semana</p>
+      </div>
+
+      <div class="cards card-rosa">
+        <h6>VIOLÊNCIA CONTRA MULHER</h6>
+        <h5>Central da Mulher</h5>
+        <span>180</span>
+        <p>Orientação, denúncia e encaminhamento para mulheres em situação de violência.</p>
+        <p class="disponivel">● Disponível 24h, 7 dias por semana</p>
+      </div>
+
+      <div class="cards card-azul">
+        <h6>CRIANÇA E ADOLESCENTE</h6>
+        <h5>Disque 100</h5>
+        <span>100</span>
+        <p>
+          Denúncias de violência, abuso e exploração contra crianças e adolescentes. Sigilo
+          garantido por lei.
+        </p>
+        <p class="disponivel">● Disponível 24h, 7 dias por semana</p>
+      </div>
+
+      <div class="cards card-roxo">
+        <h6>DENÚNCIA ANÔNIMA</h6>
+        <h5>Disque Denúncia</h5>
+        <span>181</span>
+        <p>Canal para denúncias anônimas de crimes, tráfico, homicídios e outras violações.</p>
+        <p class="disponivel">● Disponível 24h, 7 dias por semana</p>
+      </div>
+
+      <div class="cards card-roxo">
+        <h6>DIREITOS HUMANOS</h6>
+        <h5>Disque Direitos Humanos</h5>
+        <span>100</span>
+        <p>
+          Violações que incluem racismo, LGBTfobia, violência contra idosos e pessoas com
+          deficiência.
+        </p>
+        <p class="disponivel">● Disponível 24h, 7 dias por semana</p>
+      </div>
+
+      <div class="cards card-cinza">
+        <h6>INVESTIGAÇÃO</h6>
+        <h5>Polícia Civil</h5>
+        <span>197</span>
+        <p>
+          Registro de boletim de ocorrência (BO), investigação de crimes e delegacias
+          especializadas.
+        </p>
+        <p class="disponivel">● Postos presenciais e BO eletrônico</p>
+      </div>
+
+      <div class="cards card-cinza">
+        <h6>EMERGÊNCIA GERAL</h6>
+        <h5>Bombeiros</h5>
+        <span>193</span>
+        <p>
+          Resgate, atendimento de emergências e suporte a vítimas de acidentes ou situações de
+          risco.
+        </p>
+        <p class="disponivel">● Disponível 24h, 7 dias por semana</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flexbox">
+    <div class="topico">
+      <h2><span class="ordem">03</span> Boas práticas ao denunciar</h2>
+      <p>
+        Algumas orientações para que seu relato seja o mais útil e seguro possível para você e para
+        a comunidade.
+      </p>
+    </div>
+  </div>
+
+  <div class="dicas">
+    <div class="dicas-grid">
+      <div class="dica-card">
+        <div class="dica-icone">🛡️</div>
+        <h4>Sua segurança em primeiro lugar</h4>
+        <p>
+          Não coloque a si mesmo em risco para registrar informações. Denuncie após estar em local
+          seguro.
+        </p>
+      </div>
+
+      <div class="dica-card">
+        <div class="dica-icone">📋</div>
+        <h4>Seja preciso, evite suposições</h4>
+        <p>
+          Relate apenas o que foi observado diretamente. Detalhes concretos tornam o relato mais
+          útil.
+        </p>
+      </div>
+
+      <div class="dica-card">
+        <div class="dica-icone">⏱️</div>
+        <h4>Registre o mais rápido possível</h4>
+        <p>
+          Quanto mais próximo ao ocorrido, mais precisa será a informação de data, hora e local.
+        </p>
+      </div>
+
+      <div class="dica-card">
+        <div class="dica-icone">🤝</div>
+        <h4>Proteja as vítimas</h4>
+        <p>
+          Evite identificar vítimas pelo nome no relato. Priorize a descrição do contexto e do
+          local.
+        </p>
+      </div>
+
+      <div class="dica-card">
+        <div class="dica-icone">📄</div>
+        <h4>BO não exclui o relato aqui</h4>
+        <p>
+          Registre também no site mesmo que tenha feito um boletim de ocorrência. Os dados se
+          complementam.
+        </p>
+      </div>
+
+      <div class="dica-card">
+        <div class="dica-icone">📞</div>
+        <h4>Em perigo imediato, ligue 190</h4>
+        <p>
+          Este site é para registro e mapeamento. Situações de emergência exigem acionamento
+          policial.
+        </p>
+      </div>
+    </div>
+  </div>
 </main>
