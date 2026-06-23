@@ -1,151 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ==========================================
-   1. ESTRUTURA GERAL DA PÁGINA
-   ========================================== */
 .pagina-proposito {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
+  background-color: #EFECFC; 
   width: 100%;
 }
 
-/* ==========================================
-   2. BLOCO SUPERIOR (ROXO / VINHO)
-   ========================================== */
+
 .secao-topo-roxo {
-  background: linear-gradient(135deg, #2e1a3d 0%, #3d1c44 100%);
+ 
+  background: linear-gradient(90deg, #0D0221 10%, #1A0B42 70%, #2A145E 100%);
   color: #ffffff;
   width: 100%;
-  /* CORREÇÃO AQUI: Diminuído para 40px no topo e 40px na base para eliminar o espaço vazio */
-  padding: 50px 20px 40px 20px !important; 
+  padding: 60px 20px; 
+  display: flex;
+  justify-content: center;
+}
+
+.conteudo-centralizado {
+  max-width: 900px;
+  text-align: center;
+}
+
+
+.titulo-proposito {
+  font-size: 60px; 
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 800;
+  margin-bottom: 30px;
+  margin-top: 0; 
+  color: white;
+}
+
+
+.texto-proposito {
+  font-size: 21px;
+  color: rgb(190, 178, 178);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-bottom: 0; 
+}
+
+
+.secao-inferior-branca {
+  background-color: #EFECFC; 
+  width: 100%;
+  padding: 40px 20px 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container-linhas {
+  max-width: 950px;
+  width: 100%;
+}
+
+
+.linha-informativa {
+  display: flex;
+  align-items: center;
+  padding: 35px 0;
+  border-bottom: 1.5px solid rgb(56, 30, 71); 
+}
+
+
+.linha-informativa:last-child {
+  border-bottom: none;
+}
+
+
+.bloco-texto {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.titulo-item {
+  color: rgb(56, 30, 71);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.texto-item {
+  color: rgb(145, 135, 135); 
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+
+.bloco-icone {
+  flex: 0 0 100px; 
+  height: 100px;    
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.conteudo-centralizado {
-  max-width: 1000px;
-  width: 100%;
-  text-align: center;
+.icone-tela {
+  max-width: 85px !important;  
+  max-height: 85px !important; 
+  width: auto !important;
+  height: auto !important;
 }
 
-/* Título Principal "O PROPÓSITO" */
-.titulo-proposito {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 2.8rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  margin-bottom: 35px;
-  color: #ffffff;
-  text-transform: uppercase;
-}
 
-/* Blocos de Texto do Propósito */
-.bloco-texto-proposito p {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  font-weight: 400;
-  margin-bottom: 25px;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.5px;
-}
-
-/* Garante que o último parágrafo não jogue margem extra para baixo */
-.bloco-texto-proposito p:last-child {
-  margin-bottom: 0;
-}
-
-/* Destaque Amarelo Ouro */
-.destaque-ouro {
-  color: #f5b352;
-  font-weight: 700;
-}
-
-/* ==========================================
-   3. SEÇÃO DOS CARDS (PARTE BRANCA)
-   ========================================== */
-.secao-inferior-branca {
-  background-color: #ffffff;
-  width: 100%;
-  /* Padding superior cria um espaço elegante entre a linha roxa e os cards */
-  padding: 50px 20px 80px 20px;
-}
-
-/* Container que alinha os cards na parte branca */
-.wrapper-cards {
-  display: flex;
-  justify-content: center;
-  gap: 35px;
-  max-width: 1200px;
-  margin: 0 auto;
-  
-  /* Resetado propriedades antigas que geravam bugs no Angular */
-  margin-top: 0 !important; 
-  transform: none !important; 
-  
-  flex-wrap: wrap;
-}
-
-/* ==========================================
-   4. ESTILIZAÇÃO DOS RETÂNGULOS (CARDS)
-   ========================================== */
-.card-estilizado {
-  background: #ffffff;
-  border-radius: 16px; /* Cantos arredondados suaves */
-  
-  /* Linha fina e contínua usando o tom roxo principal */
-  border: 1px solid rgba(61, 28, 68, 0.25) !important; 
-  
-  /* Sombra elegante projetada para baixo */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06); 
-  
-  padding: 40px 30px;
-  flex: 1;
-  min-width: 300px;
-  max-width: 360px;
-  min-height: 240px;
-  box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efeito Hover interativo nos retângulos */
-.card-estilizado:hover {
-  transform: translateY(-5px) !important;
-  border-color: rgba(61, 28, 68, 0.5) !important; 
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
-}
-
-/* Textos internos dos Cards (Alinhados à esquerda) */
-.titulo-card {
-  color: #3d1c44; 
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-  text-align: left;
-}
-
-.texto-card {
-  color: #555555;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  font-weight: 400;
-  text-align: left;
-}
-
-/* ==========================================
-   5. RESPONSIVIDADE PARA CELULARES
-   ========================================== */
-@media (max-width: 900px) {
-  .secao-topo-roxo {
-    padding: 40px 20px 40px 20px !important;
+@media (max-width: 768px) {
+  .titulo-proposito {
+    font-size: 36px; 
   }
-  .wrapper-cards {
-    gap: 20px;
+
+  .texto-proposito {
+    width: auto;
+    font-size: 16px; 
   }
-  .card-estilizado {
-    max-width: 100%;
+
+  .linha-informativa {
+    flex-direction: column; 
+    text-align: center;
+    padding: 25px 0;
   }
-}
+  
+  .bloco-texto {
+    padding-left: 0;
+    margin-top: 15px;
+  }
