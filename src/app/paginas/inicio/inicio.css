@@ -15,6 +15,7 @@
   position: relative;
   z-index: 2;
   padding: 10%;
+  margin-left: 30px;
 }
 
 .lado_esquerdo h1 {
@@ -32,9 +33,9 @@
   color: #a855f7;
   font-weight: bold;
 }
-
+/*6d1283 a955f7b5*/
 .botao_denuncie {
-  background-color: #6d1283;
+  background-color: #a955f7b5;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -45,7 +46,7 @@
 }
 
 .botao_denuncie:hover {
-  background-color: #a855f7;
+  background-color: #9c51e286;
   color: white;
 }
 
@@ -64,18 +65,18 @@
 
 .pFundo_2 {
   background-color: #EFECFC;
-  height: 700px;
+  height: 800px;
 }
 
 .secao_apoio {
   position: relative;
-  top: 30px; /* desce tudo dentro dele */
+  top: 40px; /* desce tudo dentro dele */
 }
 
 .titulo_secao {
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 20px;
+  font-size: 25px;
   color: rgb(56, 30, 71);
   font-weight: bold;
 }
@@ -83,22 +84,23 @@
 .descricao_secao {
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
   color: rgb(145, 135, 135);
 }
 
 .cards_grupo_1{
   display: flex;
-  gap: 80px;
+  gap: 25px;
   justify-content: center;
   position: relative;
-  top: 30px; 
+  top: 40px; 
 }
 
 .card_apoio{
   display: flex;
   gap: 15px;   
-  width: 260px;
-  height: 130px;
+  width: 310px;
+  height: 180px;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -106,24 +108,33 @@
   flex-direction: row;
 }
 
-.card_apoio img {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
+.circulo {
+  margin-top: 25px;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EFECFC;
+}
+
+.circulo img {
+  width: 50%;
+  height: 50%;
   object-fit: cover;
-  margin-top: 20px;
 }
 
 .texto_apoio h1 {
   font-weight: bold;
-  font-size: 12px;
-  margin: 25px 0 8px;
+  font-size: 15px;
+  margin: 40px 0 8px;
   color: rgb(56, 30, 71);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .texto_apoio p {
-  font-size: 10px;
+  font-size: 12px;
   text-align: justify;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(145, 135, 135);
@@ -144,8 +155,8 @@
 
 .card_violencia{
   gap: 15px;   
-  width: 200px;
-  height: 200px;
+  width: 230px;
+  height: 230px;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -155,16 +166,8 @@
   align-items: center;
 }
 
-.card_violencia img {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-top: 20px;
-}
-
 .texto_violencia h1 {
-  font-size: 12px;
+  font-size: 15px;
   margin: 2px 0 8px;
   color: rgb(56, 30, 71);
   font-family: Arial, Helvetica, sans-serif;
@@ -173,7 +176,7 @@
 }
 
 .texto_violencia p {
-  font-size: 10px;
+  font-size: 12px;
   text-align: justify;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(145, 135, 135);
@@ -181,8 +184,9 @@
 }
 
 .circulo_externo {
-  width: 70px;
-  height: 70px;
+  margin-top: 20px;
+  width: 85px;
+  height: 85px;
   border: 4px solid #381E47;
   border-radius: 50%;
   display: flex;
@@ -191,8 +195,8 @@
 }
 
 .circulo_interno {
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   background-color: #381E47;
   color: white;
   border-radius: 50%;
@@ -200,4 +204,5 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  font-size: 25px;
 }
