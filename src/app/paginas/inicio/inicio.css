@@ -1,5 +1,11 @@
 .pFundo_1 {
-  background: linear-gradient(90deg, #0d0221 10%, #1a0b42 70%, #2a145e 100%);
+  background:
+  linear-gradient(
+    90deg,
+    #0D0221 10%,
+    #1A0B42 70%,
+    #2A145E 100%
+  );
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -14,10 +20,12 @@
 .lado_esquerdo h1 {
   color: white;
   margin-top: 8%;
+  font-size: 45px;
 }
 
 .lado_esquerdo p {
   color: white;
+  font-size: 17px;
 }
 
 .texto_destaque {
@@ -49,14 +57,13 @@
   z-index: 2;
 }
 
-/* COLOCAR A IMAGEM
 .img_1 {
-  max-height: 70vh;
-  width: auto;
-} */
+  height: 100%;
+  width: 50%;
+} 
 
 .pFundo_2 {
-  background-color: #efecfc;
+  background-color: #EFECFC;
   height: 700px;
 }
 
@@ -79,22 +86,22 @@
   color: rgb(145, 135, 135);
 }
 
-.cards_grupo_1 {
+.cards_grupo_1{
   display: flex;
   gap: 80px;
   justify-content: center;
   position: relative;
-  top: 30px;
+  top: 30px; 
 }
 
-.card_apoio {
+.card_apoio{
   display: flex;
-  gap: 15px;
+  gap: 15px;   
   width: 260px;
   height: 130px;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   background-color: white;
   flex-direction: row;
 }
@@ -127,25 +134,33 @@
   top: 150px;
 }
 
-.cards_grupo_2 {
+.cards_grupo_2{
   display: flex;
   gap: 30px;
   justify-content: center;
   position: relative;
-  top: 30px;
+  top: 30px; 
 }
 
-.card_violencia {
-  gap: 15px;
+.card_violencia{
+  gap: 15px;   
   width: 200px;
   height: 200px;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.card_violencia img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-top: 20px;
 }
 
 .texto_violencia h1 {
@@ -168,7 +183,7 @@
 .circulo_externo {
   width: 70px;
   height: 70px;
-  border: 4px solid #381e47;
+  border: 4px solid #381E47;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -178,7 +193,7 @@
 .circulo_interno {
   width: 50px;
   height: 50px;
-  background-color: #381e47;
+  background-color: #381E47;
   color: white;
   border-radius: 50%;
   display: flex;
