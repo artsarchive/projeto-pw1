@@ -1,0 +1,12 @@
+.fundo{
+    background:
+    linear-gradient(
+        90deg,
+        #0D0221 10%,
+        #1A0B42 70%,
+        #2A145E 100%
+    );
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
