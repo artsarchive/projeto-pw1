@@ -1,8 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, EventEmitter, Output } from '@angular/core'; /* OBS: Adição do EventEmitter e Output */
 import { KeyValuePipe, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
-import { MapOptions, tileLayer, latLng } from 'leaflet';
+import { MapOptions, tileLayer, latLng, LeafletMouseEvent} from 'leaflet'; /* OBS: Adição do LeafletMouseEvent */
 import { Menu } from '../../a/menu/menu';
 import { Rodape } from '../../a/rodape/rodape';
 
@@ -10,10 +10,24 @@ import { Rodape } from '../../a/rodape/rodape';
   selector: 'app-map',
   imports: [LeafletDirective],
   template: `
-    <div style="height: 100%" leaflet [leafletOptions]="mapOptions"></div>
+    <div
+      style="height: 100%"
+      leaflet
+      [leafletOptions]="mapOptions"
+      (leafletClick)="onMapClick($event)"> 
+    </div>
   `,
-})
-class Map {
+}) /* OBS: Adição de (leafletClick)="onMapClick($event)"> */
+
+export class Map { /* OBS: Exportei a class */
+
+  /* OBS: Adição do Output(). */
+  @Output() 
+  localSelecionado = new EventEmitter<{
+    latitude: number;
+    longitude: number;
+  }>();
+
   protected readonly mapOptions: MapOptions = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -22,6 +36,14 @@ class Map {
     zoom: 14,
     center: latLng(-14.79755, -39.17305),
   };
+
+  /* OBS: Adição do onMapClick(). */
+  onMapClick(event: LeafletMouseEvent) {
+    this.localSelecionado.emit({
+      latitude: event.latlng.lat,
+      longitude: event.latlng.lng,
+    });
+  }
 }
 
 export class Submissao {
@@ -31,6 +53,8 @@ export class Submissao {
     public horarioOcorrencia: string,
     public pontoReferencia: string,
     public local: string, // TODO: descobrir tipo
+    public latitude: number | null = null, /* OBS: Adição */
+    public longitude: number | null = null, /* OBS: Adição */
   ) {}
 }
 
@@ -86,5 +110,15 @@ export class DenuncieAqui {
 
   onSubmit(ev: Event) {
     this.debugSig.set(`SEI LA ${this.validateForm()}`);
+  }
+
+  /* OBS: Adição do método receberLocal() */
+  receberLocal(local: { latitude: number; longitude: number }) {
+    this.model.latitude = local.latitude;
+    this.model.longitude = local.longitude;
+
+    this.debugSig.set(
+      `Lat: ${local.latitude}, Lng: ${local.longitude}`
+    );
   }
 }
