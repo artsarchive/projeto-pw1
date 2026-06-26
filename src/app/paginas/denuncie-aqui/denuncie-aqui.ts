@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
 import { MapOptions, tileLayer, latLng } from 'leaflet';
 import { Menu } from '../../a/menu/menu';
+import { Rodape } from '../../a/rodape/rodape';
 
 @Component({
   selector: 'app-map',
@@ -41,7 +42,7 @@ function dateOffset(d: Date, off: number): Date {
 
 @Component({
   selector: 'app-denuncie-aqui',
-  imports: [Map, Menu, FormsModule, KeyValuePipe, JsonPipe],
+  imports: [Map, Menu, FormsModule, KeyValuePipe, JsonPipe, Rodape],
   templateUrl: './denuncie-aqui.html',
   styleUrl: './denuncie-aqui.css',
 })

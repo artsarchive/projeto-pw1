@@ -1,6 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Menu } from '../../a/menu/menu';
+import { Rodape } from '../../a/rodape/rodape';
 
 interface TipoViolencia {
   label: string;
@@ -10,7 +11,7 @@ interface TipoViolencia {
 @Component({
   selector: 'app-areas-afetadas',
   standalone: true,
-  imports: [CommonModule, Menu],
+  imports: [CommonModule, Menu, Rodape],
   templateUrl: './areas-afetadas.html',
   styleUrls: ['./areas-afetadas.css'],
 })
