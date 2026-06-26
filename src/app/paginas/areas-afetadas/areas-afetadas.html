@@ -1,24 +1,122 @@
-<main>
-    <div class="geral">
-        <app-menu></app-menu>
-        <div class="flexbox"> 
-            <div class="hero">
-                <h1>Áreas Afetadas</h1>
-                <p>Distribuição e frequência geográfica das denúncias registradas.</p>
+<app-menu></app-menu>
+<main class="page">
+  <div class="hero">
+    <div class="hero-label">Mapa de calor</div>
+    <h1>Áreas <span>afetadas</span></h1>
+    <p>
+      Visualize a distribuição geográfica das denúncias em Itabuna e Ilhéus. Filtre por tipo de
+      violência e período para análises específicas.
+    </p>
+  </div>
+
+  <div class="content">
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Total de denúncias</div>
+        <div class="stat-value">—</div>
+        <div class="stat-sub">sem dados ainda</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Bairros monitorados</div>
+        <div class="stat-value">—</div>
+        <div class="stat-sub">Itabuna + Ilhéus</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Área mais afetada</div>
+        <div class="stat-value">—</div>
+        <div class="stat-sub">sem dados ainda</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Denúncias anônimas</div>
+        <div class="stat-value">—</div>
+        <div class="stat-sub">sem dados ainda</div>
+      </div>
+    </div>
+
+    <div class="main-area">
+      <div class="filters-panel">
+        <div class="filters-title">⚙ Filtros</div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Tipo de violência</div>
+
+          <div class="checkbox-item" *ngFor="let tipo of tiposViolencia" (click)="toggleTipo(tipo)">
+            <div class="cb" [class.checked]="tipo.ativo"></div>
+            <span class="cb-label">{{ tipo.label }}</span>
+            <span class="cb-count">—</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="filter-group">
+          <div class="filter-group-label">Período</div>
+          <div class="period-options">
+            <button
+              class="period-btn"
+              *ngFor="let p of periodos"
+              [class.active]="periodoSelecionado === p"
+              (click)="selecionarPeriodo(p)"
+            >
+              {{ p }}
+            </button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="filter-group" style="margin-bottom: 16px">
+          <div class="filter-group-label">Cidade</div>
+          <div class="period-options">
+            <button
+              class="period-btn"
+              *ngFor="let c of cidades"
+              [class.active]="cidadeSelecionada === c"
+              (click)="selecionarCidade(c)"
+            >
+              {{ c }}
+            </button>
+          </div>
+        </div>
+
+        <button class="apply-btn" (click)="aplicarFiltros()">Aplicar filtros</button>
+      </div>
+
+      <div class="map-panel">
+        <div class="map-header">
+          <div class="map-header-left">
+            <h2>Distribuição geográfica</h2>
+            <p>{{ subtituloMapa }}</p>
+          </div>
+          <div class="map-badge">— ocorrências</div>
+        </div>
+
+        <div class="map-placeholder">
+          <div class="map-grid"></div>
+
+          <div class="map-empty-state">
+            <div class="map-empty-icon">⬡</div>
+            <div class="map-empty-title">Nenhum dado disponível</div>
+            <div class="map-empty-sub">
+              O mapa de calor será exibido aqui assim que as primeiras denúncias forem registradas.
             </div>
+          </div>
+
+          <div class="map-corner-label">Região Sul da Bahia — Brasil</div>
+          <div class="api-badge">⬡ Placeholder — integrar Leaflet.js</div>
         </div>
-    </div>
 
-    <div class="dashboard">
-        <div class="row cards">
-            <h2>Período</h2>
-            <button>30 dias</button>
-            <button>3 meses</button>
-            <button>6 meses</button>
-            <button>1 ano</button>
+        <div class="legend-section">
+          <div class="legend-label">Intensidade de ocorrências</div>
+          <div class="legend-gradient"></div>
+          <div class="legend-ends">
+            <span>Baixa</span>
+            <span>Moderada</span>
+            <span>Alta</span>
+            <span>Crítica</span>
+          </div>
         </div>
+      </div>
     </div>
-
-
-
+  </div>
 </main>
