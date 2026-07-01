@@ -1,6 +1,7 @@
 package br.uesc.basta.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Denuncia {
   public String endereco;
   public Float latitude;
   public Float longitude;
-  public String hora_ocorrencia;
-  public String tipo_violencia;
-  public Date data;
+  public String horaOcorrencia;
+  public String tipoViolencia;
+  public LocalDateTime data;
 }
