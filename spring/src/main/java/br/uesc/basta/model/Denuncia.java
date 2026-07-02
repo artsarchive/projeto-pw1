@@ -13,10 +13,11 @@ public class Denuncia {
   @GeneratedValue(strategy = GenerationType.AUTO)
   public Long id;
 
-  public String endereco;
+  public String nomeLocal;
   public Float latitude;
   public Float longitude;
   public String horaOcorrencia;
   public String tipoViolencia;
-  public LocalDateTime data;
+  public String pontoReferencia;
+  public LocalDateTime dataOcorrencia;
 }

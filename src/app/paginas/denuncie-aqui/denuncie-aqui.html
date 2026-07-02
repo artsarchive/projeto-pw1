@@ -4,7 +4,9 @@
   <div class="container-flex window">
     <div class="row">
       <div class="col-sm">
-        {{ debugSig() }}
+        <p>
+          (Debug signal: {{ debugSig() }})
+        </p>
 
         <form #myForm="ngForm" (submit)="onSubmit($event)">
           <div class="form-group">

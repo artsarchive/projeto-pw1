@@ -52,8 +52,8 @@ class DenunciasController {
   }
 
   @PostMapping("/")
-  public Denuncia registrarDenuncia(@RequestBody Denuncia d) {
-    return denunciaRepository.save(d);
+  public void registrarDenuncia(@RequestBody Denuncia d) {
+    denunciaRepository.save(d);
   }
 
   @PutMapping("/{id}")
