@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class Feedback {
   form: FormGroup;
+  formularioAberto = false;
 
   // ele usa o formato padrao [valorInicial, validadores]
   constructor(private fb: FormBuilder) {
@@ -20,11 +21,19 @@ export class Feedback {
     });
   }
 
+  abrirFormulario() {
+    this.formularioAberto = true;
+  }
+
+  fecharFormulario() {
+    this.formularioAberto = false;
+    this.form.reset();
+  }
+
   enviar() {
-    console.log('form válido?', this.form.valid);
-    console.log('valores:', this.form.value);
     if (this.form.valid) {
       console.log(this.form.value);
+      this.fecharFormulario(); // Fecha e limpa após enviar
     } else {
       this.form.markAllAsTouched();
     }
