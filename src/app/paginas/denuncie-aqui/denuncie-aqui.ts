@@ -97,7 +97,7 @@ function dateOffset(d: Date, off: number): Date {
 
 @Component({
   selector: 'app-denuncie-aqui',
-  imports: [Map, Menu, FormsModule, KeyValuePipe, JsonPipe, Rodape],
+  imports: [Map, Menu, FormsModule, KeyValuePipe, Rodape],
   templateUrl: './denuncie-aqui.html',
   styleUrl: './denuncie-aqui.css',
 })

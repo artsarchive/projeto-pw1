@@ -7,8 +7,6 @@
         {{ debugSig() }}
 
         <form #myForm="ngForm" (submit)="onSubmit($event)">
-          {{ model | json }}
-
           <div class="form-group">
             <label for="tipoViolencia">Qual foi o tipo de violência sofrida?</label>
             <select class="custom-select" required [(ngModel)]="model.tipoViolencia" name="tipoViolencia">
