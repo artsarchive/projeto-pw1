@@ -21,20 +21,17 @@
           <div class="form-group">
             <label>Data da ocorrência:</label>
             <input class="form-control" type="date" name="dataOcorrencia"
-              [(ngModel)]="model.dataOcorrencia" name="dataOcorrencia"/>
+              [(ngModel)]="model.dataOcorrencia"/>
           </div>
 
           <div class="form-group">
             <label for="horarioOcorrencia">Horário da ocorrência:</label>
             <select class="custom-select" required [(ngModel)]="model.horarioOcorrencia" name="horarioOcorrencia">
-              <!-- TODO: isso aqui tá bom? ou tem que ser o horário específico mesmo -->
               @for (entry of horariosOcorrencia | keyvalue; track entry.key) {
                 <option [value]="entry.key">{{ entry.value }}</option>
               }
             </select>
           </div>
-
-          <!-- TODO: usar pro resto aqui... -->
 
           <div class="form-group">
             <label for="pontoReferencia">Ponto de referência</label>
@@ -43,8 +40,7 @@
 
           <div class="form-group">
             <label for="local">Nome do local selecionado</label>
-            <input type="text" disabled value="..." class="form-control" rows="1"/>
-            <!-- TODO: implementar isso! -->
+            <input class="form-control" type="text" rows="1" name="nomeLocal" [(ngModel)]="model.nomeLocal"/>
           </div>
 
           <!-- OBS: Adição do campo Coordenadas -->
@@ -52,7 +48,7 @@
             <label>Coordenadas</label>
             <input
               class="form-control"
-              [value]="model.latitude + ', ' + model.longitude"
+              [value]="displayCoords()"
               readonly>
           </div>
 
@@ -62,10 +58,10 @@
         </form>
       </div>
       <div class="col-sm">
-        <app-map (localSelecionado)="receberLocal($event)"></app-map> <!-- OBS: Adição de (localSelecionado)="receberLocal($event)"> -->
-
-        <!-- TODO: descobrir como usar o mapa aqui... ghrhrhrhaf810h2 - https://stackoverflow.com/questions/50708920/updating-ngx-leaflet-map-based-on-bootstrap-select-input -->
-        <!-- TODO: https://www.tutorialspoint.com/leafletjs/leafletjs_markers.htm -->
+        <app-map id="map"
+          (localSelecionado)="receberLocal($event)"
+          (nomeLocalCarregado)="carregarNomeLocal($event)">
+        </app-map>
       </div>
     </div>
   </div>
