@@ -1,6 +1,13 @@
-# ProjetoPw
+# BASTA
 
-MEU DEUS PELO AMOR DE DEUS FUNCIONA
+Projeto de Web (TODO: qual o nome da disciplina mesmo) desenvolvido pelos integrantes:
+
+- Erick Souza
+- Arthur
+- Stella Ribas
+- Yohanan Santana
+
+Estrutura geral do projeto:
 
 ## front-end
 
