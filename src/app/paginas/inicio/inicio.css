@@ -65,12 +65,12 @@
 
 .pFundo_2 {
   background-color: #EFECFC;
-  height: 900px;
+  min-height: 900px;
+  padding-bottom: 200px;
 }
 
 .secao_apoio {
-  position: relative;
-  top: 40px; /* desce tudo dentro dele */
+  padding-top: 40px;
 }
 
 .titulo_secao {
@@ -93,19 +93,20 @@
   gap: 25px;
   justify-content: center;
   position: relative;
-  top: 40px; 
+  top: 40px;
+  flex-wrap: wrap;
 }
 
 .card_apoio{
   display: flex;
   gap: 15px;   
-  width: 310px;
-  height: 180px;
+  width: 100%;
+  max-width: 310px;
+  min-height: 180px;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   background-color: white;
-  flex-direction: row;
 }
 
 .circulo {
@@ -151,6 +152,7 @@
   justify-content: center;
   position: relative;
   top: 30px; 
+  flex-wrap: wrap;
 }
 
 .card_violencia{
