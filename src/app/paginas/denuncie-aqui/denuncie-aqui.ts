@@ -1,8 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, EventEmitter, Output } from '@angular/core'; /* OBS: Adição do EventEmitter e Output */
 import { KeyValuePipe, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
-import { MapOptions, tileLayer, latLng } from 'leaflet';
+import { MapOptions, tileLayer, latLng, LeafletMouseEvent, layerGroup, marker } from 'leaflet'; /* OBS: Adição do LeafletMouseEvent */
 import { Menu } from '../../a/menu/menu';
 import { Rodape } from '../../a/rodape/rodape';
 
@@ -10,27 +10,57 @@ import { Rodape } from '../../a/rodape/rodape';
   selector: 'app-map',
   imports: [LeafletDirective],
   template: `
-    <div style="height: 100%" leaflet [leafletOptions]="mapOptions"></div>
+    <div
+      style="height: 100%"
+      leaflet
+      [leafletOptions]="mapOptions"
+      (leafletClick)="onMapClick($event)">
+    </div>
   `,
-})
-class Map {
+}) /* OBS: Adição de (leafletClick)="onMapClick($event)"> */
+
+export class Map { /* OBS: Exportei a class */
+  /* OBS: Adição do Output(). */
+  @Output()
+  localSelecionado = new EventEmitter<{
+    latitude: number;
+    longitude: number;
+  }>();
+
+  protected readonly markers = layerGroup();
+
   protected readonly mapOptions: MapOptions = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { maxZoom: 18, attribution: '...' }),
+      this.markers,
     ],
     zoom: 14,
     center: latLng(-14.79755, -39.17305),
   };
+
+  /* OBS: Adição do onMapClick(). */
+  onMapClick(event: LeafletMouseEvent) {
+    // TODO: fazer imagem do marker funcionar
+    this.markers.clearLayers();
+    marker(event.latlng).addTo(this.markers);
+
+    this.localSelecionado.emit({
+      latitude: event.latlng.lat,
+      longitude: event.latlng.lng,
+    });
+  }
 }
 
 export class Submissao {
   constructor(
-    public tipoViolencia: string,
-    public dataOcorrencia: string,
-    public horarioOcorrencia: string,
-    public pontoReferencia: string,
-    public local: string, // TODO: descobrir tipo
+    public tipoViolencia: string = "agressao",
+    public dataOcorrencia: string = "",
+    public horarioOcorrencia: string = "tarde",
+    public pontoReferencia: string = "",
+    public local: string = "",
+    public latitude: number | null = null, /* OBS: Adição */
+    public longitude: number | null = null, /* OBS: Adição */
   ) {}
 }
 
@@ -58,8 +88,6 @@ export class DenuncieAqui {
     "exploração": "Exploração",
     "machismo": "Machismo",
     "assalto": "Assalto",
-
-    // FIXME: esses aqui fazem sentido? eles tem overlap
     "insulto": "Insulto",
     "desrespeito": "Desrespeito",
     "injustica": "Injustiça",
@@ -73,7 +101,7 @@ export class DenuncieAqui {
     "noite": "Noite (18:00 - 23:59)",
   };
 
-  model = new Submissao("agressao", "", "tarde", "", "");
+  model = new Submissao();
 
   validateForm(): boolean {
     const now = new Date();
@@ -85,6 +113,16 @@ export class DenuncieAqui {
   }
 
   onSubmit(ev: Event) {
-    this.debugSig.set(`SEI LA ${this.validateForm()}`);
+    this.debugSig.set(`Tentou enviar; válido=${this.validateForm()}`);
+  }
+
+  /* OBS: Adição do método receberLocal() */
+  receberLocal(local: { latitude: number; longitude: number }) {
+    this.model.latitude = local.latitude;
+    this.model.longitude = local.longitude;
+
+    // this.debugSig.set(
+    //   `Lat: ${local.latitude}, Lng: ${local.longitude}`
+    // );
   }
 }
