@@ -3,7 +3,7 @@
 Projeto de Web (TODO: qual o nome da disciplina mesmo) desenvolvido pelos integrantes:
 
 - Erick Souza
-- Arthur
+- Arthur Araújo
 - Stella Ribas
 - Yohanan Santana
 
