@@ -1,23 +1,34 @@
 import {
-  Component, signal, EventEmitter, Output, ViewChild, viewChild, ElementRef,
-  AfterViewInit, inject,
+  Component,
+  signal,
+  EventEmitter,
+  Output,
+  ViewChild,
+  viewChild,
+  ElementRef,
+  AfterViewInit,
+  inject,
 } from '@angular/core';
 import { KeyValuePipe, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
 import {
-  MapOptions, tileLayer, LatLng, latLng, LeafletMouseEvent, layerGroup, marker
+  MapOptions,
+  tileLayer,
+  LatLng,
+  latLng,
+  LeafletMouseEvent,
+  layerGroup,
+  marker,
 } from 'leaflet';
-import { HttpClient } from '@angular/common/http';
 import * as leaflet from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-control-geocoder';
+
 import { Menu } from '../../a/menu/menu';
 import { Rodape } from '../../a/rodape/rodape';
-
-import "leaflet/dist/leaflet.css";
-import "leaflet-control-geocoder";
-// import "leaflet-control-geocoder/dist/Control.Geocoder.css";
-// import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 
 @Component({
   selector: 'app-map',
@@ -27,13 +38,13 @@ import "leaflet-control-geocoder";
       style="height: 100%"
       leaflet
       [leafletOptions]="mapOptions"
-      (leafletClick)="onMapClick($event)">
-    </div>
+      (leafletClick)="onMapClick($event)"
+    ></div>
   `,
 }) /* OBS: Adição de (leafletClick)="onMapClick($event)"> */
-
-export class Map implements AfterViewInit { /* OBS: Exportei a class */
-  map = viewChild.required<ElementRef>("map");
+export class Map implements AfterViewInit {
+  /* OBS: Exportei a class */
+  map = viewChild.required<ElementRef>('map');
   geocoder: any = null;
 
   /* OBS: Adição do Output(). */
@@ -47,8 +58,10 @@ export class Map implements AfterViewInit { /* OBS: Exportei a class */
 
   protected readonly mapOptions: MapOptions = {
     layers: [
-      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        { maxZoom: 18, attribution: 'Mapa proveniente do <a href="https://openstreetmap.org/">OpenStreetMap</a>.' }),
+      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: 'Mapa proveniente do <a href="https://openstreetmap.org/">OpenStreetMap</a>.',
+      }),
       this.markers,
     ],
     zoom: 14,
@@ -59,7 +72,7 @@ export class Map implements AfterViewInit { /* OBS: Exportei a class */
     const L = leaflet as any;
     this.geocoder = new L.Control.Geocoder({
       geocoder: L.Control.Geocoder.nominatim(),
-      defaultMarkGeocode: false
+      defaultMarkGeocode: false,
     });
     this.geocoder.addTo(this);
   }
@@ -72,27 +85,29 @@ export class Map implements AfterViewInit { /* OBS: Exportei a class */
     this.localSelecionado.emit(event.latlng);
 
     type NominatimResult = {
-      name: string,
+      name: string;
     };
 
     const zoom = 1000000000; // XXX: acho que seria bom calcular o zoom mas não entendi como; isso aqui dá pro gasto
-    this.geocoder.options.geocoder.reverse(event.latlng, zoom).then((results: NominatimResult[]) => {
-      const r = results[0];
-      if (!r) return;
-      this.nomeLocalCarregado.emit(r.name);
-    });
+    this.geocoder.options.geocoder
+      .reverse(event.latlng, zoom)
+      .then((results: NominatimResult[]) => {
+        const r = results[0];
+        if (!r) return;
+        this.nomeLocalCarregado.emit(r.name);
+      });
   }
 }
 
 export class Submissao {
   constructor(
-    public tipoViolencia: string = "agressao",
-    public dataOcorrencia: string = "",
-    public horarioOcorrencia: string = "tarde",
-    public pontoReferencia: string = "",
-    public nomeLocal: string = "",
-    public latitude: number | null = null, /* OBS: Adição */
-    public longitude: number | null = null, /* OBS: Adição */
+    public tipoViolencia: string = 'agressao',
+    public dataOcorrencia: string = '',
+    public horarioOcorrencia: string = 'tarde',
+    public pontoReferencia: string = '',
+    public nomeLocal: string = '',
+    public latitude: number | null = null /* OBS: Adição */,
+    public longitude: number | null = null /* OBS: Adição */,
   ) {}
 }
 
@@ -110,35 +125,35 @@ function dateOffset(d: Date, off: number): Date {
 })
 export class DenuncieAqui {
   private http = inject(HttpClient);
-  debugSig = signal("");
+  debugSig = signal('');
 
   readonly tiposViolencia = {
-    "trafico": "Tráfico",
-    "sexual": "Sexual",
-    "feminicidio": "Feminicídio",
-    "agressao": "Agressão",
-    "psicologica": "Psicológica",
-    "exploração": "Exploração",
-    "machismo": "Machismo",
-    "assalto": "Assalto",
-    "insulto": "Insulto",
-    "desrespeito": "Desrespeito",
-    "injustica": "Injustiça",
-    "indiferença": "Indiferença",
+    trafico: 'Tráfico',
+    sexual: 'Sexual',
+    feminicidio: 'Feminicídio',
+    agressao: 'Agressão',
+    psicologica: 'Psicológica',
+    exploração: 'Exploração',
+    machismo: 'Machismo',
+    assalto: 'Assalto',
+    insulto: 'Insulto',
+    desrespeito: 'Desrespeito',
+    injustica: 'Injustiça',
+    indiferença: 'Indiferença',
   };
 
   readonly horariosOcorrencia = {
-    "madrugada": "Madrugada (00:00 - 04:59)",
-    "manha": "Manhã (05:00 - 12:59)",
-    "tarde": "Tarde (13:00 - 17:59)",
-    "noite": "Noite (18:00 - 23:59)",
+    madrugada: 'Madrugada (00:00 - 04:59)',
+    manha: 'Manhã (05:00 - 12:59)',
+    tarde: 'Tarde (13:00 - 17:59)',
+    noite: 'Noite (18:00 - 23:59)',
   };
 
   model = new Submissao();
 
   displayCoords(): string {
     if (this.model.latitude === null || this.model.longitude === null) {
-      return "";
+      return '';
     }
     return `${this.model.latitude}, ${this.model.longitude}`;
   }
@@ -174,7 +189,7 @@ export class DenuncieAqui {
   receberLocal(local: LatLng) {
     this.model.latitude = local.lat;
     this.model.longitude = local.lng;
-    this.model.nomeLocal = "(Carregando...)";
+    this.model.nomeLocal = '(Carregando...)';
   }
 
   carregarNomeLocal(nome: string) {

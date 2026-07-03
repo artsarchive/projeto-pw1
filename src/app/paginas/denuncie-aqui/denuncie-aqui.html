@@ -1,17 +1,35 @@
 <app-menu></app-menu>
 
 <div class="center-wrapper">
-  <div class="container-flex window">
-    <div class="row">
-      <div class="col-sm">
-        <p>
-          (Debug signal: {{ debugSig() }})
-        </p>
+  <div class="window">
+    <p>
+      (Debug signal: {{ debugSig() }})
+    </p>
 
+    <div class="report-header">
+      <h1>Fazer uma denúncia</h1>
+      <p>Conte o que aconteceu. Cada detalhe ajuda a mapear áreas de risco.</p>
+    </div>
+
+    <div class="trust-banner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="4" y="10" width="16" height="10" rx="2" />
+        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+      </svg>
+      <span>Sua denúncia é anônima e tratada com confidencialidade.</span>
+    </div>
+
+    <div class="report-row">
+      <div>
         <form #myForm="ngForm" (submit)="onSubmit($event)">
           <div class="form-group">
             <label for="tipoViolencia">Qual foi o tipo de violência sofrida?</label>
-            <select class="custom-select" required [(ngModel)]="model.tipoViolencia" name="tipoViolencia">
+            <select
+              class="custom-select"
+              required
+              [(ngModel)]="model.tipoViolencia"
+              name="tipoViolencia"
+            >
               @for (tipo of tiposViolencia | keyvalue; track tipo.key) {
                 <option [value]="tipo.key">{{ tipo.value }}</option>
               }
@@ -20,13 +38,22 @@
 
           <div class="form-group">
             <label>Data da ocorrência:</label>
-            <input class="form-control" type="date" name="dataOcorrencia"
-              [(ngModel)]="model.dataOcorrencia"/>
+            <input
+              class="form-control"
+              type="date"
+              name="dataOcorrencia"
+              [(ngModel)]="model.dataOcorrencia"
+            />
           </div>
 
           <div class="form-group">
             <label for="horarioOcorrencia">Horário da ocorrência:</label>
-            <select class="custom-select" required [(ngModel)]="model.horarioOcorrencia" name="horarioOcorrencia">
+            <select
+              class="custom-select"
+              required
+              [(ngModel)]="model.horarioOcorrencia"
+              name="horarioOcorrencia"
+            >
               @for (entry of horariosOcorrencia | keyvalue; track entry.key) {
                 <option [value]="entry.key">{{ entry.value }}</option>
               }
@@ -35,32 +62,43 @@
 
           <div class="form-group">
             <label for="pontoReferencia">Ponto de referência</label>
-            <textarea class="form-control" required [(ngModel)]="model.pontoReferencia" name="pontoReferencia"></textarea>
+            <textarea
+              class="form-control"
+              required
+              [(ngModel)]="model.pontoReferencia"
+              name="pontoReferencia"
+            ></textarea>
           </div>
 
           <div class="form-group">
             <label for="local">Nome do local selecionado</label>
-            <input class="form-control" type="text" rows="1" name="nomeLocal" [(ngModel)]="model.nomeLocal"/>
+            <input
+              class="form-control"
+              type="text"
+              rows="1"
+              name="nomeLocal"
+              [(ngModel)]="model.nomeLocal"
+            />
           </div>
 
           <!-- OBS: Adição do campo Coordenadas -->
           <div class="form-group">
             <label>Coordenadas</label>
-            <input
-              class="form-control"
-              [value]="displayCoords()"
-              readonly>
+            <input class="form-control" [value]="displayCoords()" readonly />
           </div>
 
           <div class="form-group">
-            <button class="btn btn-primary">Enviar</button>
+            <button class="btn-primary">Enviar denúncia</button>
           </div>
         </form>
       </div>
-      <div class="col-sm">
-        <app-map id="map"
+
+      <div class="map-frame">
+        <app-map
+          id="map"
           (localSelecionado)="receberLocal($event)"
-          (nomeLocalCarregado)="carregarNomeLocal($event)">
+          (nomeLocalCarregado)="carregarNomeLocal($event)"
+        >
         </app-map>
       </div>
     </div>
