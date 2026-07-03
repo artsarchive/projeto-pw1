@@ -10,7 +10,7 @@ import {
   inject,
 } from '@angular/core';
 import { KeyValuePipe, JsonPipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
@@ -139,8 +139,8 @@ function isValidDate(got_: Date): boolean {
   styleUrl: './denuncie-aqui.css',
 })
 export class DenuncieAqui {
+  private form = viewChild.required<NgForm>("myForm");
   private http = inject(HttpClient);
-  debugSig = signal('');
 
   readonly tiposViolencia: Record<string, string> = {
     trafico: 'Tráfico',
@@ -197,19 +197,18 @@ export class DenuncieAqui {
     const err = this.getFormError();
     if (err != null) {
       alert(`Falha ao enviar: ${err}`);
-      this.debugSig.set(`Falha ao enviar: ${err}`);
       return;
     }
 
-    this.debugSig.set('Enviando...');
     this.http.post<any>('http://localhost:8080/denuncias/', this.model).toPromise()
       .then((response: any) => {
-        this.debugSig.set(`Sucesso; resposta: ${response}`);
-        console.log(response);
+        alert("Denúncia cadastada com sucesso!");
+        this.form().resetForm();
+        console.log({sucess: response});
       })
       .catch((response: any) => {
-        this.debugSig.set(`Falha; resposta: ${response}`);
-        console.log(response);
+        alert("Falha ao enviar: erro interno.");
+        console.log({failure: response});
       });
   }
 
