@@ -1,11 +1,14 @@
 # BASTA
 
-Projeto de Web (TODO: qual o nome da disciplina mesmo) desenvolvido pelos integrantes:
+Projeto de Programação Web desenvolvido pelos integrantes:
 
 - Erick Souza
 - Arthur Araújo
 - Stella Ribas
 - Yohanan Santana
+
+Link para o frontend: 
+https://projeto-pw1.vercel.app/
 
 Estrutura geral do projeto:
 
