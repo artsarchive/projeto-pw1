@@ -1,11 +1,12 @@
 package br.uesc.basta.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Denuncia {
@@ -19,5 +20,7 @@ public class Denuncia {
   public String horaOcorrencia;
   public String tipoViolencia;
   public String pontoReferencia;
-  public LocalDateTime dataOcorrencia;
+
+  @JsonFormat(pattern="yyyy-MM-dd")
+  public LocalDate dataOcorrencia;
 }

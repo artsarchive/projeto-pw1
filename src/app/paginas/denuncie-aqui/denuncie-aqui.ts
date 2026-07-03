@@ -111,10 +111,25 @@ export class Submissao {
   ) {}
 }
 
+function normalizeDate(d: Date): Date {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0);
+}
+
 function dateOffset(d: Date, off: number): Date {
   const c = new Date(d);
   c.setDate(c.getDate() + off);
   return c;
+}
+
+function isValidDate(got_: Date): boolean {
+  // FIXME: de madrugada pode dar errado. algo com timezones
+
+  const now = normalizeDate(new Date());
+  const got = normalizeDate(got_);
+
+  if (got < dateOffset(now, -7)) return false;
+  if (got > now) return false;
+  return true;
 }
 
 @Component({
@@ -127,7 +142,7 @@ export class DenuncieAqui {
   private http = inject(HttpClient);
   debugSig = signal('');
 
-  readonly tiposViolencia = {
+  readonly tiposViolencia: Record<string, string> = {
     trafico: 'Tráfico',
     sexual: 'Sexual',
     feminicidio: 'Feminicídio',
@@ -142,7 +157,7 @@ export class DenuncieAqui {
     indiferença: 'Indiferença',
   };
 
-  readonly horariosOcorrencia = {
+  readonly horariosOcorrencia: Record<string, string> = {
     madrugada: 'Madrugada (00:00 - 04:59)',
     manha: 'Manhã (05:00 - 12:59)',
     tarde: 'Tarde (13:00 - 17:59)',
@@ -158,18 +173,31 @@ export class DenuncieAqui {
     return `${this.model.latitude}, ${this.model.longitude}`;
   }
 
-  validateForm(): boolean {
-    const now = new Date();
-    const got = new Date(this.model.dataOcorrencia).getDate();
+  getFormError(): null | string {
+    if (this.model.dataOcorrencia == "")
+      return "Data inválida";
 
-    if (got < dateOffset(now, -7).getDate()) return false;
-    if (got > now.getDate()) return false;
-    return true;
+    const dataOcorrencia = new Date(this.model.dataOcorrencia);
+    if (!isValidDate(dataOcorrencia)) return "A data deve estar entre hoje e 7 dias atrás";
+
+    if (this.tiposViolencia[this.model.tipoViolencia] == undefined)
+      return "Tipo de violência inválido";
+
+    if (this.horariosOcorrencia[this.model.horarioOcorrencia] == undefined)
+      return "Horário de ocorrência inválido";
+
+    if (this.model.nomeLocal == ""
+        && (this.model.latitude == null || this.model.longitude == null))
+      return "Nenhum local foi especificado";
+
+    return null;
   }
 
   onSubmit(ev: Event) {
-    if (!this.validateForm()) {
-      this.debugSig.set("Falha ao enviar (form inválido)");
+    const err = this.getFormError();
+    if (err != null) {
+      alert(`Falha ao enviar: ${err}`);
+      this.debugSig.set(`Falha ao enviar: ${err}`);
       return;
     }
 
