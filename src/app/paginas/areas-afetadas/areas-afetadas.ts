@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Menu } from '../../a/menu/menu';
 import { Rodape } from '../../a/rodape/rodape';
@@ -15,7 +15,7 @@ interface TipoViolencia {
   templateUrl: './areas-afetadas.html',
   styleUrls: ['./areas-afetadas.css'],
 })
-export class AreasAfetadas {
+export class AreasAfetadas implements AfterViewInit {
   tiposViolencia: TipoViolencia[] = [
     { label: 'Física', ativo: true },
     { label: 'Psicológica', ativo: true },
@@ -36,6 +36,10 @@ export class AreasAfetadas {
 
   periodoSelecionado = 'Últimos 3 meses';
   cidadeSelecionada = 'Ambas';
+
+  ngAfterViewInit() {
+    // TODO: carregar mapa aqui
+  }
 
   get subtituloMapa(): string {
     const local = this.cidadeSelecionada === 'Ambas' ? 'Itabuna e Ilhéus' : this.cidadeSelecionada;

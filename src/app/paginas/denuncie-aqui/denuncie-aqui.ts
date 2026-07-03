@@ -24,7 +24,6 @@ import {
   marker,
 } from 'leaflet';
 import * as leaflet from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import 'leaflet-control-geocoder';
 
 import { Menu } from '../../a/menu/menu';
@@ -174,21 +173,19 @@ export class DenuncieAqui {
   }
 
   getFormError(): null | string {
-    if (this.model.dataOcorrencia == "")
-      return "Data inválida";
+    if (this.model.dataOcorrencia == '') return 'Data inválida';
 
     const dataOcorrencia = new Date(this.model.dataOcorrencia);
-    if (!isValidDate(dataOcorrencia)) return "A data deve estar entre hoje e 7 dias atrás";
+    if (!isValidDate(dataOcorrencia)) return 'A data deve estar entre hoje e 7 dias atrás';
 
     if (this.tiposViolencia[this.model.tipoViolencia] == undefined)
-      return "Tipo de violência inválido";
+      return 'Tipo de violência inválido';
 
     if (this.horariosOcorrencia[this.model.horarioOcorrencia] == undefined)
-      return "Horário de ocorrência inválido";
+      return 'Horário de ocorrência inválido';
 
-    if (this.model.nomeLocal == ""
-        && (this.model.latitude == null || this.model.longitude == null))
-      return "Nenhum local foi especificado";
+    if (this.model.nomeLocal == '' && (this.model.latitude == null || this.model.longitude == null))
+      return 'Nenhum local foi especificado';
 
     return null;
   }
@@ -200,7 +197,9 @@ export class DenuncieAqui {
       return;
     }
 
-    this.http.post<any>('http://localhost:8080/denuncias/', this.model).toPromise()
+    this.http
+      .post<any>('http://localhost:8080/denuncias/', this.model)
+      .toPromise()
       .then((response: any) => {
         alert("Denúncia cadastada com sucesso!");
         this.form().resetForm();
