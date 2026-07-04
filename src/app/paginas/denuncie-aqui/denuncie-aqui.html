@@ -90,12 +90,12 @@
       </div>
 
       <div class="map-frame">
-        <app-map
+        <app-reverse-geocoded-map
           id="map"
+          (reverseGeocoding)="true"
           (localSelecionado)="receberLocal($event)"
-          (nomeLocalCarregado)="carregarNomeLocal($event)"
-        >
-        </app-map>
+          (nomeLocalCarregado)="carregarNomeLocal($event)">
+        </app-reverse-geocoded-map>
       </div>
     </div>
   </div>

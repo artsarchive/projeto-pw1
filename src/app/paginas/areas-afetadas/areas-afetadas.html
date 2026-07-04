@@ -91,16 +91,8 @@
           <div class="map-badge">— ocorrências</div>
         </div>
 
-        <div class="map-placeholder">
-          <div class="map-grid"></div>
-
-          <div class="map-empty-state">
-            <div class="map-empty-icon">⬡</div>
-            <div class="map-empty-title">Nenhum dado disponível</div>
-            <div class="map-empty-sub">
-              O mapa de ocorrências será exibido aqui assim que as primeiras denúncias forem registradas.
-            </div>
-          </div>
+        <div style="height: 600px">
+          <app-base-map #map (reverseGeocoding)="false"></app-base-map>
         </div>
 
         <div class="legend-section">

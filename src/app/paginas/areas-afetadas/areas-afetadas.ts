@@ -1,7 +1,8 @@
-import { Component, computed, signal, AfterViewInit } from '@angular/core';
+import { Component, computed, signal, AfterViewInit, inject, ElementRef, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Menu } from '../../a/menu/menu';
-import { Rodape } from '../../a/rodape/rodape';
+import { HttpClient } from '@angular/common/http';
+
+import { BaseMap, Menu, Rodape } from '../../a';
 
 interface TipoViolencia {
   label: string;
@@ -11,11 +12,14 @@ interface TipoViolencia {
 @Component({
   selector: 'app-areas-afetadas',
   standalone: true,
-  imports: [CommonModule, Menu, Rodape],
+  imports: [BaseMap, CommonModule, Menu, Rodape],
   templateUrl: './areas-afetadas.html',
   styleUrls: ['./areas-afetadas.css'],
 })
 export class AreasAfetadas implements AfterViewInit {
+  private http = inject(HttpClient);
+  private map = viewChild.required<BaseMap>('map');
+
   tiposViolencia: TipoViolencia[] = [
     { label: 'Física', ativo: true },
     { label: 'Psicológica', ativo: true },
@@ -33,12 +37,29 @@ export class AreasAfetadas implements AfterViewInit {
   ];
 
   cidades: string[] = ['Ambas', 'Itabuna', 'Ilhéus'];
-
   periodoSelecionado = 'Últimos 3 meses';
   cidadeSelecionada = 'Ambas';
 
+  preencherMapa(denuncias: any[]) {
+    const map = this.map();
+    map.clearMarkers();
+    for (const d of denuncias) {
+      const latlng = {lat: d.latitude, lng: d.longitude};
+      map.addMarker(latlng);
+    }
+  }
+
   ngAfterViewInit() {
-    // TODO: carregar mapa aqui
+    this.http
+      .get<any>('http://localhost:8080/denuncias/')
+      .toPromise()
+      .then((x) => this.preencherMapa(x))
+      .catch((response: any) => {
+        alert("Falha ao carregar as denúncias");
+        console.error(response);
+      });
+
+    // TODO: preencher o mapa
   }
 
   get subtituloMapa(): string {

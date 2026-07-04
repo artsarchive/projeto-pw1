@@ -3,9 +3,7 @@ import {
   signal,
   EventEmitter,
   Output,
-  ViewChild,
   viewChild,
-  ElementRef,
   AfterViewInit,
   inject,
 } from '@angular/core';
@@ -13,90 +11,11 @@ import { KeyValuePipe, JsonPipe } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-import { LeafletDirective } from '@bluehalo/ngx-leaflet';
-import {
-  MapOptions,
-  tileLayer,
-  LatLng,
-  latLng,
-  LeafletMouseEvent,
-  layerGroup,
-  marker,
-} from 'leaflet';
-import * as leaflet from 'leaflet';
-import 'leaflet-control-geocoder';
+import { LatLng } from 'leaflet';
 
+import { ReverseGeocodedMap } from '../../a/mapa';
 import { Menu } from '../../a/menu/menu';
 import { Rodape } from '../../a/rodape/rodape';
-
-@Component({
-  selector: 'app-map',
-  imports: [LeafletDirective],
-  template: `
-    <div
-      style="height: 100%"
-      leaflet
-      [leafletOptions]="mapOptions"
-      (leafletClick)="onMapClick($event)"
-    ></div>
-  `,
-}) /* OBS: Adição de (leafletClick)="onMapClick($event)"> */
-export class Map implements AfterViewInit {
-  /* OBS: Exportei a class */
-  map = viewChild.required<ElementRef>('map');
-  geocoder: any = null;
-
-  /* OBS: Adição do Output(). */
-  @Output()
-  localSelecionado = new EventEmitter<LatLng>();
-
-  @Output()
-  nomeLocalCarregado = new EventEmitter<string>();
-
-  protected readonly markers = layerGroup();
-
-  protected readonly mapOptions: MapOptions = {
-    layers: [
-      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: 'Mapa proveniente do <a href="https://openstreetmap.org/">OpenStreetMap</a>.',
-      }),
-      this.markers,
-    ],
-    zoom: 14,
-    center: latLng(-14.79755, -39.17305),
-  };
-
-  ngAfterViewInit() {
-    const L = leaflet as any;
-    this.geocoder = new L.Control.Geocoder({
-      geocoder: L.Control.Geocoder.nominatim(),
-      defaultMarkGeocode: false,
-    });
-    this.geocoder.addTo(this);
-  }
-
-  /* OBS: Adição do onMapClick(). */
-  onMapClick(event: LeafletMouseEvent) {
-    this.markers.clearLayers();
-    marker(event.latlng).addTo(this.markers);
-
-    this.localSelecionado.emit(event.latlng);
-
-    type NominatimResult = {
-      name: string;
-    };
-
-    const zoom = 1000000000; // XXX: acho que seria bom calcular o zoom mas não entendi como; isso aqui dá pro gasto
-    this.geocoder.options.geocoder
-      .reverse(event.latlng, zoom)
-      .then((results: NominatimResult[]) => {
-        const r = results[0];
-        if (!r) return;
-        this.nomeLocalCarregado.emit(r.name);
-      });
-  }
-}
 
 export class Submissao {
   constructor(
@@ -105,8 +24,8 @@ export class Submissao {
     public horarioOcorrencia: string = 'tarde',
     public pontoReferencia: string = '',
     public nomeLocal: string = '',
-    public latitude: number | null = null /* OBS: Adição */,
-    public longitude: number | null = null /* OBS: Adição */,
+    public latitude: number | null = null,
+    public longitude: number | null = null,
   ) {}
 }
 
@@ -133,7 +52,7 @@ function isValidDate(got_: Date): boolean {
 
 @Component({
   selector: 'app-denuncie-aqui',
-  imports: [Map, Menu, FormsModule, KeyValuePipe, Rodape],
+  imports: [ReverseGeocodedMap, Menu, FormsModule, KeyValuePipe, Rodape],
   templateUrl: './denuncie-aqui.html',
   styleUrl: './denuncie-aqui.css',
 })
@@ -211,7 +130,6 @@ export class DenuncieAqui {
       });
   }
 
-  /* OBS: Adição do método receberLocal() */
   receberLocal(local: LatLng) {
     this.model.latitude = local.lat;
     this.model.longitude = local.lng;
