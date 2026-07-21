@@ -194,17 +194,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.circulo_interno {
-  width: 65px;
-  height: 65px;
-  background-color: #381E47;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #381E47;
   font-weight: bold;
   font-size: 25px;
+  background-color: #FFFFFF;
 }
+
